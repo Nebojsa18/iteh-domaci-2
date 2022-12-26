@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KorisnikController;
 use App\Http\Controllers\RentController;
 use Illuminate\Http\Request;
@@ -18,12 +19,22 @@ use Illuminate\Support\Facades\Route;
 
  Route::get('/korisnik',[KorisnikController::class,'index']);
  Route::get('/korisnik/{id}',[KorisnikController::class,'show']);
- Route::delete('/korisnik/{id}',[KorisnikController::class,'destroy']);
- Route::post('/korisnik',[KorisnikController::class,'store']);
- Route::put('/korisnik/{id}',[KorisnikController::class,'update']);
+
 
  Route::get('/rent',[RentController::class,'index']);
  Route::get('/rent/{id}',[RentController::class,'show']);
 
 
+ Route::post('/register',[AuthController::class,'register']);
+ Route::post('/login',[AuthController::class,'login']);
+
+
+
+ Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/logout',[AuthController::class,'logout']);
+
+    Route::delete('/korisnik/{id}',[KorisnikController::class,'destroy']);
+    Route::post('/korisnik',[KorisnikController::class,'store']);
+    Route::put('/korisnik/{id}',[KorisnikController::class,'update']);
+ });
 
