@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\RentResource;
 use App\Models\Rent;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class RentController extends Controller
      */
     public function index()
     {
-        //
+        return RentResource::collection(Rent::all());
     }
 
     /**
@@ -44,9 +45,9 @@ class RentController extends Controller
      * @param  \App\Models\Rent  $rent
      * @return \Illuminate\Http\Response
      */
-    public function show(Rent $rent)
+    public function show( $id)
     {
-        //
+        return new RentResource(Rent::find($id));
     }
 
     /**
