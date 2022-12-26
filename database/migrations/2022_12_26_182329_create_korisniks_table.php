@@ -15,6 +15,12 @@ class CreateKorisniksTable extends Migration
     {
         Schema::create('korisniks', function (Blueprint $table) {
             $table->id();
+            $table->string('ime');
+            $table->string('prezime');
+            $table->string('br_voz_doz');
+            $table->string('datum_rodjenja');
+
+
             $table->timestamps();
         });
     }

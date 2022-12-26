@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVozilosTable extends Migration
+class IzmeniTabeluVozilos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateVozilosTable extends Migration
      */
     public function up()
     {
-        Schema::create('vozilos', function (Blueprint $table) {
-            $table->id();
-            $table->string('marka');
-            $table->string('model');
-            $table->integer('godiste');
-            $table->string('tip');
-
-            $table->timestamps();
+        Schema::table('vozilos', function (Blueprint $table) {
+           
+            $table->integer('broj_vrata');
+    
+          
         });
     }
 
@@ -31,6 +28,11 @@ class CreateVozilosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vozilos');
+        Schema::table('vozilos', function (Blueprint $table) {
+           
+            $table->removeColumn('broj_vrata');
+    
+          
+        });
     }
 }

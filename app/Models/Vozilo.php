@@ -13,7 +13,12 @@ class Vozilo extends Model
         'model',
         'godiste',
         'tip',
+        'broj_vrata'
         
 
     ];
+    public function rente()
+    {
+         return $this->hasMany(Rent::class);
+    }
 }
