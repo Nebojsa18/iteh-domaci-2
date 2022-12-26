@@ -14,7 +14,11 @@ class KorisnikFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'ime' => $this->faker->firstName(),
+            'prezime' => $this->faker->lastName(),
+            'br_voz_doz' => $this->faker->numerify("###########"),
+            'datum_rodjenja' =>  $this->faker->date($format='Y-m-d',$max='now'),
+           
         ];
     }
 }
