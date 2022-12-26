@@ -18,5 +18,12 @@ use Illuminate\Support\Facades\Route;
 
  Route::get('/korisnik',[KorisnikController::class,'index']);
  Route::get('/korisnik/{id}',[KorisnikController::class,'show']);
+ Route::delete('/korisnik/{id}',[KorisnikController::class,'destroy']);
+ Route::post('/korisnik',[KorisnikController::class,'store']);
+ Route::put('/korisnik/{id}',[KorisnikController::class,'update']);
+
  Route::get('/rent',[RentController::class,'index']);
  Route::get('/rent/{id}',[RentController::class,'show']);
+
+
+
